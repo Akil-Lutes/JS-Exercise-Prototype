@@ -39,10 +39,26 @@ function Airplane(name) {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
   
- function Person() {
-    
-  }
+
+
+function Person(attrs) {
+  this.name = attrs.name;
+  this.age = attrs.age;
+  this.stomach = [];
+}
+
  
+Person.prototype.eat = function(food) {
+  return this.stomach.push(food);
+}
+
+Person.prototype.poop = function(food) {
+  return this.stomach = [];
+ }
+
+Person.prototype.toString() = function personToString() {
+  return `${this.name}, ${this.age}`
+}
  
 
   
@@ -63,9 +79,10 @@ function Airplane(name) {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
+function Car(model, milesPerGallon) {
+  this.tank 
     
-  }
+}
   
   
   /*
@@ -75,18 +92,26 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
-  }
+
+//subclass of Person *not instance*
+function Baby(name, age, favoriteToy) {
+  Person.call(this, attrs)
+  this.favoriteToy = attrs.favoriteToy;
+}
+
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function() {
+  return `Plaing with ${this.favoriteToy}`
+}
  
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Call - explicitly bind this word. I can assign the this-binding on the 1st argument of the call. This-binding is not permanent. Can be overwritten. 
+    2. Apply - the apply binding of this returns properties in an array.
+    3. Bind - permanently changes the this-binding. Does not change original function. So I am guessing I create this-bindings with with apply or call first. Then assign a empty bind function variable to it.
+    4. new-binding - I can create new instances of a constructor with the new keyword. The new keyword binds the this properties and I guess copies them from the constructor to the instance, while giving me the opportunity to add new properties to the instance.
   */
   
   
